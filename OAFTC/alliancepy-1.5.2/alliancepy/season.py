@@ -30,3 +30,9 @@ class Season(enum.IntEnum):
     RELIC_RECOVERY = 1718
     ROVER_RUCKUS = 1819
     SKYSTONE = 1920
+    #POWERPLAY = 2223
+    #FREIGHT_FRENZY = 2122
+    #ULTIMATE_GOAL = 2021
+    #RESQ =
+    #CASCADE_EFFECT =
+    #BLOCK_PARTY =
