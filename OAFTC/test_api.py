@@ -49,7 +49,7 @@ for i in range (10000, 10500):#realistic test range
 # print team attributes to csv file
         with open('ftc_stats.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([i, name, affiliation, location,  wins, losses, ties, matches_played, win_perc, opr, npopr])
+            writer.writerow([i, name, affiliation, wins, losses, ties, matches_played, win_perc, opr, npopr])
 
         #print(str(i) + " " + name + " " + affiliation + " " + location + " " + str(wins) + " " + str(losses) + " " + str(ties) + " " + str(matches_played) + " " = str(win_perc) + " " + str(opr) + " " + str(npopr))
 

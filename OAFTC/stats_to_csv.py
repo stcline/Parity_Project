@@ -35,7 +35,7 @@ act_teams = 0
 inact_teams = 0
 reg_teams = 0
 unreg_teams = 0
-first_team = 5000
+first_team = 1
 last_team = 10000
 
 client = alliancepy.Client(api_key="VpBih4206XpG8c+aDDFlBwhzd30tra5HYO14s+Qeyak="
@@ -49,11 +49,14 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
         name = FTCteam.short_name
         affiliation = FTCteam.long_name
         location = FTCteam.location
+        locs = location.split(',')
+        city = locs[0].lstrip()
+        state = locs[1].lstrip()
+        country = locs[2].lstrip()
+        zip = locs[3].lstrip()
         #TODO: conditional here to fix leading zero on ZIP Codes
-        #TODO: parse location into city, state, country, ZIP. Remove 'location' attribute for these four. Eliminate empty quotes in csv.
         #TODO: determine how to deal with no ZIP internationally.  May not matter much.
-        #rookie_year = FTCteam.rookie_year
-        #TODO: understand this function to return the rookie year data
+        rookieyr = FTCteam.rookie_year
 
         # gather season attributes
         #TODO: Try other seasons which are commented out in season.py (these need to be placed in the season.py file in the module in the alliancepy package)
@@ -63,6 +66,7 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
         matches_played = wins + losses + ties
         opr = FTCteam.opr(Season.SKYSTONE)
         npopr = FTCteam.np_opr(Season.SKYSTONE)
+        # events = FTCteam.events(Season.SKYSTONE) - Need to work on this
         if (matches_played != 0):
             win_perc = wins / matches_played
             reg_teams = reg_teams + 1
@@ -74,7 +78,7 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
         # print team attributes to csv file
         with open('team_stats.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([i, name, affiliation, location,  wins, losses, ties, matches_played, win_perc, opr, npopr])
+            writer.writerow([i, name, affiliation, rookieyr, city, state, country, zip, wins, losses, ties, matches_played, win_perc, opr, npopr])
 
         #print(str(i) + " " + name + " " + affiliation + " " + location + " " + str(wins) + " " + str(losses) + " " + str(ties) + " " + str(matches_played) + " " = str(win_perc) + " " + str(opr) + " " + str(npopr))
 
