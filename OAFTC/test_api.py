@@ -28,11 +28,7 @@ for i in range (10000, 10500):#realistic test range
         name = FTCteam.short_name
         affiliation = FTCteam.long_name
         location = FTCteam.location
-        #TODO: conditional here to fix leading zero on ZIP Codes
-        #TODO: parse location into city, state, country, ZIP. Remove 'location' attribute for these four. Eliminate empty quotes in csv.
-        #TODO: determine how to deal with no ZIP internationally.  May not matter much.
-        #rookie_year = FTCteam.rookie_year
-        #TODO: understand this function to return the rookie year data
+
 
         # gather season attributes
         wins = FTCteam.season_wins(Season.SKYSTONE)

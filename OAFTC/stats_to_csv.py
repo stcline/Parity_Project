@@ -35,8 +35,8 @@ act_teams = 0
 inact_teams = 0
 reg_teams = 0
 unreg_teams = 0
-first_team = 1
-last_team = 10000
+first_team = 15000
+last_team = 15010
 
 client = alliancepy.Client(api_key="VpBih4206XpG8c+aDDFlBwhzd30tra5HYO14s+Qeyak="
 , application_name="application_name")
@@ -57,6 +57,7 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
         #TODO: conditional here to fix leading zero on ZIP Codes
         #TODO: determine how to deal with no ZIP internationally.  May not matter much.
         rookieyr = FTCteam.rookie_year
+        last_active = FTCteam.last_active
 
         # gather season attributes
         #TODO: Try other seasons which are commented out in season.py (these need to be placed in the season.py file in the module in the alliancepy package)
@@ -78,7 +79,7 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
         # print team attributes to csv file
         with open('team_stats.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([i, name, affiliation, rookieyr, city, state, country, zip, wins, losses, ties, matches_played, win_perc, opr, npopr])
+            writer.writerow([i, name, affiliation, rookieyr, last_active, city, state, country, zip, wins, losses, ties, matches_played, win_perc, opr, npopr])
 
         #print(str(i) + " " + name + " " + affiliation + " " + location + " " + str(wins) + " " + str(losses) + " " + str(ties) + " " + str(matches_played) + " " = str(win_perc) + " " + str(opr) + " " + str(npopr))
 
@@ -86,7 +87,7 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
 
         with open('team_stats.csv', 'a', newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([i, -99, -99, -99, -99, -99, -99, -99, -99, -99, -99, -99])
+            writer.writerow([i, -99])
 
         unreg_teams = unreg_teams + 1
 
