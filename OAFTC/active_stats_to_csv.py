@@ -46,9 +46,9 @@ client = alliancepy.Client(api_key="VpBih4206XpG8c+aDDFlBwhzd30tra5HYO14s+Qeyak=
 for i in range (first_team, last_team): # range of team numbers to iterate through
     try:
         FTCteam = client.team(i)
-        wins = FTCteam.season_wins(Season.SKYSTONE)
-        losses = FTCteam.season_losses(Season.SKYSTONE)
-        ties = FTCteam.season_ties(Season.SKYSTONE)
+        wins = FTCteam.season_wins(Season.ROVER_RUCKUS)
+        losses = FTCteam.season_losses(Season.ROVER_RUCKUS)
+        ties = FTCteam.season_ties(Season.ROVER_RUCKUS)
         matches_played = wins + losses + ties
         #print('Team ' + str(i))
 
@@ -67,12 +67,12 @@ for i in range (first_team, last_team): # range of team numbers to iterate throu
 
             # gather season attributes
             #TODO: Try other seasons which are commented out in season.py (these need to be placed in the season.py file in the module in the alliancepy package)
-            opr = FTCteam.opr(Season.SKYSTONE)
-            npopr = FTCteam.np_opr(Season.SKYSTONE)
-            # events = FTCteam.events(Season.SKYSTONE) - Need to work on this
+            opr = FTCteam.opr(Season.ROVER_RUCKUS)
+            npopr = FTCteam.np_opr(Season.ROVER_RUCKUS)
+            # events = FTCteam.events(Season.ROVER_RUCKUS) - Need to work on this
             win_perc = wins / matches_played
 
-            with open('act_team_stats.csv', 'a', newline='') as csvfile:
+            with open('ROVER_RUCKUS_team_stats.csv', 'a', newline='') as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(
                     [i, name, affiliation, rookieyr, last_active, city, state, country, zip, wins, losses, ties, matches_played, win_perc, opr, npopr])
